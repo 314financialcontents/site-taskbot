@@ -112,7 +112,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
         {/* Copyright */}
         <div className="border-t border-[#1B4965] pt-8 text-center text-[#E1E5F0] opacity-70">
-          <p>© {currentYear} Taskbot.pro. Todos los derechos reservados.</p>
+          <p>© {currentYear} Taskbot.pro. Todos los derechos reservados .</p>
         </div>
       </div>
     </footer>
