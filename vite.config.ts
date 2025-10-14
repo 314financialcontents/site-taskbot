@@ -71,6 +71,8 @@
       manifest: true,
       // Copia archivos importantes para Cloudflare Pages
       copyPublicDir: true,
+      // No utilizar el HTML de desarrollo en producción
+      emptyOutDir: true,
     },
     server: {
       port: 3000,
