@@ -51,7 +51,20 @@
     },
     build: {
       target: 'esnext',
-      outDir: 'build',
+      outDir: 'dist',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            ui: Object.keys(require('./package.json').dependencies)
+              .filter(pkg => pkg.includes('@radix-ui'))
+          }
+        }
+      },
+      // Asegura que los archivos estáticos se copian
+      assetsInlineLimit: 0,
+      // Asegura que los tipos MIME son correctos
+      manifest: true,
     },
     server: {
       port: 3000,
