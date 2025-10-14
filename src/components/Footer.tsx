@@ -1,4 +1,7 @@
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+import innovaPemeImg from 'figma:asset/a830e676ae6ab941a73b754fb2357f09e50433e8.png';
+import igapeImg from 'figma:asset/59add9222fd85bf4d54b2ea4be07d733ca0a1034.png';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -26,6 +29,36 @@ export function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="bg-[#0D1B2A] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Sección de Ayudas */}
+        <div className="mb-12 pb-12 border-b border-[#1B4965]">
+          <p className="text-center text-[#E1E5F0] opacity-80 mb-8">
+            Nuestra empresa se ha beneficiado de las siguientes ayudas:
+          </p>
+          
+          {/* Primera fila: 2 logos en columnas */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-4xl mx-auto">
+            <img
+              src={innovaPemeImg}
+              alt="Plan de Innovación 3.14 Financial Contents - Xunta de Galicia - Axencia Galega de Innovación"
+              className="w-full object-contain"
+            />
+            <img
+              src={igapeImg}
+              alt="Instituto Galego de Promoción Económica - Cofinanciado pola Unión Europea - Fondos Europeos"
+              className="w-full object-contain"
+            />
+          </div>
+          
+          {/* Segunda fila: Logo ministerio full width */}
+          <div className="max-w-4xl mx-auto">
+            <img
+              src="https://www.3.14financialcontents.com/static/img/logo_ministerio.svg"
+              alt="Ministerio de Industria, Comercio y Turismo"
+              className="w-full object-contain"
+            />
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
@@ -112,7 +145,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
         {/* Copyright */}
         <div className="border-t border-[#1B4965] pt-8 text-center text-[#E1E5F0] opacity-70">
-          <p>© {currentYear} Taskbot.pro. Todos los derechos reservados .</p>
+          <p>© {currentYear} Taskbot.pro. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

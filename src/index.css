@@ -1509,6 +1509,10 @@
     }
   }
 
+  .object-contain {
+    object-fit: contain;
+  }
+
   .object-cover {
     object-fit: cover;
   }
@@ -1643,6 +1647,10 @@
 
   .pb-6 {
     padding-bottom: calc(var(--spacing) * 6);
+  }
+
+  .pb-12 {
+    padding-bottom: calc(var(--spacing) * 12);
   }
 
   .pl-4 {
