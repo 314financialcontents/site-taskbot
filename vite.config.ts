@@ -58,13 +58,19 @@
             vendor: ['react', 'react-dom'],
             ui: Object.keys(require('./package.json').dependencies)
               .filter(pkg => pkg.includes('@radix-ui'))
-          }
+          },
+          // Establecer extensiones de archivo para tipos MIME correctos
+          entryFileNames: 'assets/[name].[hash].js',
+          chunkFileNames: 'assets/[name].[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]'
         }
       },
       // Asegura que los archivos estáticos se copian
       assetsInlineLimit: 0,
       // Asegura que los tipos MIME son correctos
       manifest: true,
+      // Copia archivos importantes para Cloudflare Pages
+      copyPublicDir: true,
     },
     server: {
       port: 3000,

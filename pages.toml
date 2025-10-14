@@ -1,0 +1,15 @@
+name = "site-taskbot"
+
+# Build configuration
+[build]
+command = "npm run build"
+publish = "dist"
+
+# Build settings
+[build.environment]
+NODE_VERSION = "20"
+
+# Site settings
+[site]
+bucket = "dist"
+entry-point = "workers-site"
