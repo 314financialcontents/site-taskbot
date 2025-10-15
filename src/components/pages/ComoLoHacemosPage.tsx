@@ -1,80 +1,48 @@
 import { Search, Lightbulb, Cog, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface ComoLoHacemosPageProps {
   onNavigate: (page: string) => void;
 }
 
 export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
+  const { t } = useLanguage();
   const methodology = [
     {
       step: '01',
       icon: <Search className="w-10 h-10" />,
-      title: 'Análisis y diagnóstico',
-      description: 'Entendemos el dominio, detectamos tareas repetitivas y fijamos objetivos medibles.',
-      details: [
-        'Mapa de procesos (entradas/salidas)',
-        'Reglas, límites y excepciones',
-        'Priorización y caso piloto',
-        'KPIs base y metas',
-      ],
+      title: t('comoLoHacemos.methodology.step1.title'),
+      description: t('comoLoHacemos.methodology.step1.description'),
+      details: t('comoLoHacemos.methodology.step1.details'),
     },
     {
       step: '02',
       icon: <Lightbulb className="w-10 h-10" />,
-      title: 'Diseño del agente',
-      description: 'Modelamos el conocimiento y definimos cómo debe operar el agente.',
-      details: [
-        'Modelo ligero del dominio',
-        'Catálogo de decisiones/acciones permitidas',
-        'Validaciones y umbrales de control',
-        'Plan de evidencias y trazabilidad',
-      ],
+      title: t('comoLoHacemos.methodology.step2.title'),
+      description: t('comoLoHacemos.methodology.step2.description'),
+      details: t('comoLoHacemos.methodology.step2.details'),
     },
     {
       step: '03',
       icon: <Cog className="w-10 h-10" />,
-      title: 'Configuración y pruebas',
-      description: 'Configuramos el agente y orquestamos flujos si procede (también puede ir stand-alone).',
-      details: [
-        'Habilitación de acciones seguras',
-        'Orquestación de flujos (p. ej., n8n) (opcional)',
-        'Pruebas pre/post-ejecución en sandbox',
-        'Registros y evidencias por ejecución',
-      ],
+      title: t('comoLoHacemos.methodology.step3.title'),
+      description: t('comoLoHacemos.methodology.step3.description'),
+      details: t('comoLoHacemos.methodology.step3.details'),
     },
     {
       step: '04',
       icon: <Rocket className="w-10 h-10" />,
-      title: 'Lanzamiento y mejora continua',
-      description: 'Ponemos en marcha el piloto y evolucionamos con datos reales.',
-      details: [
-        'Despliegue controlado del piloto',
-        'Panel de KPIs y alertas',
-        'Gobierno de cambios y versionado',
-        'Ampliación de casos y ajuste de reglas',
-      ],
+      title: t('comoLoHacemos.methodology.step4.title'),
+      description: t('comoLoHacemos.methodology.step4.description'),
+      details: t('comoLoHacemos.methodology.step4.details'),
     },
   ];
 
-  const advantages = [
-    'Documentación de todos los flujos y reglas',
-    'Entregas semanales que puedes probar',
-    'Acceso directo al equipo técnico',
-    'Código y configuración que queda en tu empresa',
-    'Sin vendor lock-in: usas herramientas estándar',
-    'Formación incluida para que puedas evolucionar los agentes',
-  ];
+  const advantages = t('comoLoHacemos.advantages');
 
-  const technologies = [
-    'OpenAI / Anthropic (LLMs)',
-    'n8n / Zapier (orquestación)',
-    'Python / Node.js',
-    'APIs REST estándar',
-    'Tu stack actual (ERP, CRM, Excel)',
-    'Control de versiones (Git)',
-  ];
+  const technologies = t('comoLoHacemos.technologies');
 
   return (
     <div className="min-h-screen bg-white">
@@ -83,10 +51,10 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-              Cómo lo hacemos
+              {t('comoLoHacemos.title')}
             </h1>
             <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              Un proceso estructurado en cuatro fases que combina análisis de negocio, diseño técnico y despliegue controlado para automatizar tus procesos con garantías.
+              {t('comoLoHacemos.subtitle')}
             </p>
           </div>
         </div>
@@ -97,10 +65,10 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Nuestra metodología
+              {t('comoLoHacemos.methodologyTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Cada proyecto sigue el mismo proceso, adaptado a tu caso concreto
+              {t('comoLoHacemos.methodologySubtitle')}
             </p>
           </div>
 
@@ -155,7 +123,7 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
             {/* Advantages */}
             <div>
               <h2 className="text-[#0D1B2A] mb-8" style={{ fontSize: '2rem', fontWeight: 700 }}>
-                Qué recibes al trabajar con nosotros
+                {t('comoLoHacemos.advantagesTitle')}
               </h2>
               <div className="space-y-4">
                 {advantages.map((advantage, index) => (
@@ -172,7 +140,7 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
             {/* Technologies */}
             <div>
               <h2 className="text-[#0D1B2A] mb-8" style={{ fontSize: '2rem', fontWeight: 700 }}>
-                Con qué trabajamos
+                {t('comoLoHacemos.technologiesTitle')}
               </h2>
               <div className="grid grid-cols-2 gap-4">
                 {technologies.map((tech, index) => (
@@ -182,7 +150,7 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
                 ))}
               </div>
               <p className="mt-6 text-[#5A6B7C]" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                Usamos herramientas estándar del mercado. Nada propietario, nada que te ate a nosotros. Si mañana quieres continuar solo o con otro partner, puedes hacerlo.
+                {t('comoLoHacemos.technologiesNote')}
               </p>
             </div>
           </div>
@@ -194,42 +162,42 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Tiempos reales de implementación
+              {t('comoLoHacemos.timelineTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Estos son los plazos habituales basados en proyectos completados
+              {t('comoLoHacemos.timelineSubtitle')}
             </p>
           </div>
 
           <div className="bg-white border-2 border-[#E1E5F0] rounded-lg p-8">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>Análisis y diagnóstico</span>
-                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>1-2 semanas</span>
+                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep1')}</span>
+                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep1Time')}</span>
               </div>
               <div className="h-2 bg-[#E1E5F0] rounded-full overflow-hidden">
                 <div className="h-full bg-[#3A7D7C] w-1/4"></div>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>Diseño del agente</span>
-                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>1-2 semanas</span>
+                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep2')}</span>
+                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep2Time')}</span>
               </div>
               <div className="h-2 bg-[#E1E5F0] rounded-full overflow-hidden">
                 <div className="h-full bg-[#3A7D7C] w-1/4"></div>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>Configuración y pruebas</span>
-                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>4-8 semanas</span>
+                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep3')}</span>
+                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep3Time')}</span>
               </div>
               <div className="h-2 bg-[#E1E5F0] rounded-full overflow-hidden">
                 <div className="h-full bg-[#3A7D7C] w-1/2"></div>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>Lanzamiento y mejora continua</span>
-                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>Continuo</span>
+                <span className="text-[#0D1B2A]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep4')}</span>
+                <span className="text-[#3A7D7C]" style={{ fontWeight: 600 }}>{t('comoLoHacemos.timelineStep4Time')}</span>
               </div>
               <div className="h-2 bg-[#E1E5F0] rounded-full overflow-hidden">
                 <div className="h-full bg-[#3A7D7C] w-full"></div>
@@ -243,26 +211,18 @@ export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {
       <section className="py-20 bg-[#1B4965] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-            ¿Tienes un proceso que podría automatizarse?
+            {t('comoLoHacemos.ctaTitle')}
           </h2>
           <p className="mt-4 text-[#E1E5F0]" style={{ fontSize: '1.25rem' }}>
-            Analicemos juntos si es candidato para agentes de IA (sin compromiso)
+            {t('comoLoHacemos.ctaSubtitle')}
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-8 flex justify-center">
             <Button 
               onClick={() => onNavigate('contacto')}
               className="bg-[#3A7D7C] hover:bg-[#2E7D6D] text-white px-10 py-6"
               style={{ fontSize: '1.125rem' }}
             >
-              Reserva tu análisis gratuito <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
-              onClick={() => onNavigate('sobre-taskbot')}
-              variant="outline"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#1B4965] px-10 py-6"
-              style={{ fontSize: '1.125rem' }}
-            >
-              Conoce al equipo
+              {t('comoLoHacemos.ctaButton')} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>

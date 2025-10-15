@@ -1,61 +1,55 @@
-import { Compass, ShieldCheck, Plug, Bot, CheckCircle, Activity } from 'lucide-react';
+import { Compass, ShieldCheck, Plug, Bot, Settings, Activity } from 'lucide-react';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface QueHacemosPageProps {
   onNavigate?: (page: string) => void;
 }
 
 export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {
+  const { t } = useLanguage();
   const services = [
     {
       icon: <Compass className="w-8 h-8" />,
-      title: 'Diagnóstico & Roadmap de Automatización',
-      description: 'Auditamos procesos y priorizamos oportunidades de mayor impacto. Estimamos ROI y definimos un piloto viable con alcance, hitos y riesgos controlados.',
-      tags: ['ROI', 'Auditoría de procesos', 'Priorización', 'Piloto', 'Roadmap', 'Business case'],
+      title: t('queHacemos.services.service1.title'),
+      description: t('queHacemos.services.service1.description'),
+      tags: t('queHacemos.services.service1.tags'),
     },
     {
       icon: <ShieldCheck className="w-8 h-8" />,
-      title: 'Modelado de Dominio & Guardarraíles',
-      description: 'Convertimos tu lógica de negocio en ontologías ligeras y reglas operativas. Establecemos límites y validaciones para operar con seguridad y cumplimiento.',
-      tags: ['Ontologías', 'Reglas de negocio', 'Validaciones', 'Cumplimiento', 'Guardarraíles', 'Governance'],
+      title: t('queHacemos.services.service2.title'),
+      description: t('queHacemos.services.service2.description'),
+      tags: t('queHacemos.services.service2.tags'),
     },
     {
       icon: <Plug className="w-8 h-8" />,
-      title: 'API de Acciones & Gateway MCP',
-      description: 'Abstraemos operaciones en un catálogo de acciones seguro y auditable. Exposición vía API/Gateway MCP para interacción estandarizada y trazabilidad total.',
-      tags: ['API de acciones', 'MCP', 'Conectores', 'Auditoría', 'Estandarización', 'Trazabilidad'],
+      title: t('queHacemos.services.service3.title'),
+      description: t('queHacemos.services.service3.description'),
+      tags: t('queHacemos.services.service3.tags'),
     },
     {
       icon: <Bot className="w-8 h-8" />,
-      title: 'Agentes Inteligentes + Flujos Ejecutables',
-      description: 'Agentes especializados en tu dominio que generan/ejecutan flujos dinámicos (p. ej., n8n), con orquestación y manejo proactivo de excepciones.',
-      tags: ['Agentes de IA', 'Orquestación', 'n8n', 'Flujos dinámicos', 'Excepciones', 'Automatización'],
+      title: t('queHacemos.services.service4.title'),
+      description: t('queHacemos.services.service4.description'),
+      tags: t('queHacemos.services.service4.tags'),
     },
     {
-      icon: <CheckCircle className="w-8 h-8" />,
-      title: 'QA, Trazabilidad & Verificación',
-      description: 'Plan de pruebas estructurado, validaciones pre/post-ejecución y evidencias con logs para auditoría end-to-end y control de regresiones.',
-      tags: ['QA', 'Pruebas automatizadas', 'Validaciones', 'Evidencias', 'Logs', 'Auditoría'],
+      icon: <Settings className="w-8 h-8" />,
+      title: t('queHacemos.services.service5.title'),
+      description: t('queHacemos.services.service5.description'),
+      tags: t('queHacemos.services.service5.tags'),
     },
     {
       icon: <Activity className="w-8 h-8" />,
-      title: 'Operación Gestionada & Mejora Continua',
-      description: 'Monitorizamos KPIs, afinamos reglas y ampliamos casos de uso. Gobierno de cambios y soporte con SLA para evolución controlada y robusta.',
-      tags: ['KPIs', 'Mejora continua', 'SLA', 'Cambio controlado', 'Observabilidad', 'Reliability'],
+      title: t('queHacemos.services.service6.title'),
+      description: t('queHacemos.services.service6.description'),
+      tags: t('queHacemos.services.service6.tags'),
     },
   ];
 
-  const industries = [
-    'Finanzas y contabilidad',
-    'Logística e intralogística',
-    'Retail',
-    'Comercio electrónico',
-    'Editorial',
-    'Educación',
-    'Restauración',
-  ];
+  const industries = t('queHacemos.industries');
 
   return (
     <div className="min-h-screen bg-white">
@@ -64,13 +58,13 @@ export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-              Qué hacemos
+              {t('queHacemos.title')}
             </h1>
             <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              En Taskbot.pro ofrecemos hiperautomatización especializada para empresas medianas y grandes con procesos definidos. Creamos agentes de IA a medida que comprenden la lógica, el contexto y las particularidades de tu dominio.
+              {t('queHacemos.subtitle')}
             </p>
             <p className="mt-4 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              Convertimos tu conocimiento experto en un sistema operativo: analizamos, capturamos y formalizamos reglas, límites y excepciones para ejecutar con guardarraíles, validaciones y trazabilidad. Resultado: ejecución autónoma, consistente y auditable, menos errores y más foco del equipo en estrategia, creatividad y cliente.
+              {t('queHacemos.description')}
             </p>
           </div>
         </div>
@@ -81,10 +75,10 @@ export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Nuestros Servicios
+              {t('queHacemos.servicesTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Soluciones completas para la transformación digital de tu empresa
+              {t('queHacemos.servicesSubtitle')}
             </p>
           </div>
 
@@ -130,34 +124,34 @@ export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {
             </div>
             <div>
               <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-                Ejecución con Control
+                {t('queHacemos.executionTitle')}
               </h2>
               <p className="mt-6 text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                La automatización solo aporta valor si es segura, predecible y auditable. Diseñamos la operación con guardarraíles explícitos, validaciones y evidencias para cada ejecución.
+                {t('queHacemos.executionText1')}
               </p>
               <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                Tu equipo mantiene el control: reglas versionadas, trazabilidad end-to-end y métricas claras para decidir y mejorar sin perder estabilidad.
+                {t('queHacemos.executionText2')}
               </p>
               <ul className="mt-6 space-y-3">
                 <li className="flex items-start text-[#5A6B7C]">
                   <span className="text-[#3A7D7C] mr-3">•</span>
-                  <span><strong className="text-[#0D1B2A]">Guardarraíles operativos:</strong> límites y validaciones por regla.</span>
+                  <span><strong className="text-[#0D1B2A]">{t('queHacemos.executionFeature1Title')}</strong> {t('queHacemos.executionFeature1')}</span>
                 </li>
                 <li className="flex items-start text-[#5A6B7C]">
                   <span className="text-[#3A7D7C] mr-3">•</span>
-                  <span><strong className="text-[#0D1B2A]">Verificación pre/post:</strong> comprobaciones automáticas en cada paso.</span>
+                  <span><strong className="text-[#0D1B2A]">{t('queHacemos.executionFeature2Title')}</strong> {t('queHacemos.executionFeature2')}</span>
                 </li>
                 <li className="flex items-start text-[#5A6B7C]">
                   <span className="text-[#3A7D7C] mr-3">•</span>
-                  <span><strong className="text-[#0D1B2A]">Trazabilidad & evidencias:</strong> qué, cuándo, por quién/agente y resultado.</span>
+                  <span><strong className="text-[#0D1B2A]">{t('queHacemos.executionFeature3Title')}</strong> {t('queHacemos.executionFeature3')}</span>
                 </li>
                 <li className="flex items-start text-[#5A6B7C]">
                   <span className="text-[#3A7D7C] mr-3">•</span>
-                  <span><strong className="text-[#0D1B2A]">Gobierno de cambios:</strong> versionado y aprobaciones antes de desplegar.</span>
+                  <span><strong className="text-[#0D1B2A]">{t('queHacemos.executionFeature4Title')}</strong> {t('queHacemos.executionFeature4')}</span>
                 </li>
                 <li className="flex items-start text-[#5A6B7C]">
                   <span className="text-[#3A7D7C] mr-3">•</span>
-                  <span><strong className="text-[#0D1B2A]">Observabilidad:</strong> KPIs, alertas y panel de salud.</span>
+                  <span><strong className="text-[#0D1B2A]">{t('queHacemos.executionFeature5Title')}</strong> {t('queHacemos.executionFeature5')}</span>
                 </li>
               </ul>
             </div>
@@ -170,10 +164,10 @@ export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Industrias que servimos
+              {t('queHacemos.industriesTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Experiencia en múltiples sectores
+              {t('queHacemos.industriesSubtitle')}
             </p>
           </div>
           

@@ -2,32 +2,34 @@ import { Target, Users, Award, Heart, Mail, MapPin, Phone, CheckCircle, Clock, Z
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface SobreTaskbotPageProps {
   onNavigate?: (page: string) => void;
 }
 
 export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
+  const { t } = useLanguage();
   const values = [
     {
       icon: <Eye className="w-8 h-8" />,
-      title: 'Transparencia',
-      description: 'Sin caja negra. Cada decisión del agente es auditable, cada proceso documentado. Generamos confianza mediante trazabilidad total y claridad en cada paso.',
+      title: t('sobreTaskbot.values.transparency.title'),
+      description: t('sobreTaskbot.values.transparency.description'),
     },
     {
       icon: <Handshake className="w-8 h-8" />,
-      title: 'Colaboración',
-      description: 'Trabajamos codo a codo con nuestros clientes como verdaderos socios estratégicos. Tu conocimiento es la base; juntos lo convertimos en automatización sostenible.',
+      title: t('sobreTaskbot.values.collaboration.title'),
+      description: t('sobreTaskbot.values.collaboration.description'),
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
-      title: 'Innovación',
-      description: 'Adoptamos tecnologías emergentes de IA para crear soluciones prácticas que transforman procesos repetitivos en ejecución autónoma, siempre con foco en resultados medibles.',
+      title: t('sobreTaskbot.values.innovation.title'),
+      description: t('sobreTaskbot.values.innovation.description'),
     },
     {
       icon: <Target className="w-8 h-8" />,
-      title: 'Impacto',
-      description: 'Resultados tangibles que transforman tu operación: horas ahorradas, errores reducidos y equipos liberados de tareas tediosas para enfocarse en trabajo de mayor valor.',
+      title: t('sobreTaskbot.values.impact.title'),
+      description: t('sobreTaskbot.values.impact.description'),
     },
   ];
 
@@ -40,10 +42,10 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-              Sobre Taskbot.pro
+              {t('sobreTaskbot.title')}
             </h1>
             <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              Somos un equipo apasionado de expertos en tecnología dedicados a transformar la manera en que las empresas trabajan a través de la automatización inteligente.
+              {t('sobreTaskbot.subtitle')}
             </p>
           </div>
         </div>
@@ -55,10 +57,10 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Por qué existimos
+              {t('sobreTaskbot.whyWeExistTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Nuestra razón de ser y hacia dónde vamos
+              {t('sobreTaskbot.whyWeExistSubtitle')}
             </p>
           </div>
 
@@ -70,16 +72,16 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                 <div className="bg-gradient-to-br from-[#1B4965] to-[#0D1B2A] text-white p-12 lg:p-16 flex flex-col justify-center">
                   <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 mb-6 w-fit">
                     <p className="text-white text-sm" style={{ fontWeight: 600, letterSpacing: '0.05em' }}>
-                      NUESTRA MISIÓN
+                      {t('sobreTaskbot.missionLabel')}
                     </p>
                   </div>
                   
                   <h3 className="text-white mb-6" style={{ fontSize: '2rem', fontWeight: 700, lineHeight: 1.3 }}>
-                    Convertir el know-how empresarial en ejecución autónoma
+                    {t('sobreTaskbot.missionTitle')}
                   </h3>
                   
                   <p className="text-[#E1E5F0] mb-6" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                    Ayudamos a empresas medianas y grandes a formalizar, automatizar y escalar sus procesos críticos mediante agentes de IA especializados. Sin caja negra, sin rehacer tu infraestructura, con trazabilidad total.
+                    {t('sobreTaskbot.missionText')}
                   </p>
 
                   <div className="space-y-3">
@@ -90,7 +92,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#E1E5F0]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        Automatización dominio-first, no flujos genéricos
+                        {t('sobreTaskbot.missionPoint1')}
                       </p>
                     </div>
                     
@@ -101,7 +103,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#E1E5F0]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        Activos transferibles: el conocimiento queda en tu empresa
+                        {t('sobreTaskbot.missionPoint2')}
                       </p>
                     </div>
                     
@@ -112,7 +114,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#E1E5F0]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        Resultados en 4-8 semanas, no en 6+ meses
+                        {t('sobreTaskbot.missionPoint3')}
                       </p>
                     </div>
                   </div>
@@ -183,15 +185,15 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                             </div>
                           </div>
                           <p className="text-white text-xl" style={{ fontWeight: 700 }}>95%+</p>
-                          <p className="text-white/70 text-xs mt-1">Precisión</p>
+                          <p className="text-white/70 text-xs mt-1">{t('sobreTaskbot.missionStats.precision')}</p>
                         </div>
                       </div>
 
                       {/* Process Flow */}
                       <div className="bg-white/15 backdrop-blur-sm border border-white/30 rounded-lg p-4">
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-white text-sm" style={{ fontWeight: 600 }}>Flujo automatizado</span>
-                          <span className="px-2 py-1 bg-[#2E7D6D] rounded text-white text-xs">Activo</span>
+                          <span className="text-white text-sm" style={{ fontWeight: 600 }}>{t('sobreTaskbot.missionStats.automatedFlow')}</span>
+                          <span className="px-2 py-1 bg-[#2E7D6D] rounded text-white text-xs">{t('sobreTaskbot.missionStats.active')}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="flex-1 h-1.5 bg-white/30 rounded-full overflow-hidden">
@@ -201,7 +203,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </div>
                         <div className="mt-3 flex items-center gap-2 text-white/60 text-xs">
                           <CheckCircle className="w-4 h-4" />
-                          <span>Validaciones pasadas</span>
+                          <span>{t('sobreTaskbot.missionStats.validationsPassed')}</span>
                         </div>
                       </div>
 
@@ -214,8 +216,8 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                               <div className="absolute inset-0 w-2 h-2 bg-[#2E7D6D] rounded-full animate-ping"></div>
                             </div>
                             <div>
-                              <p className="text-white text-sm" style={{ fontWeight: 600 }}>API de acciones</p>
-                              <p className="text-white/60 text-xs">Ontología cargada</p>
+                              <p className="text-white text-sm" style={{ fontWeight: 600 }}>{t('sobreTaskbot.missionStats.actionsAPI')}</p>
+                              <p className="text-white/60 text-xs">{t('sobreTaskbot.missionStats.ontologyLoaded')}</p>
                             </div>
                           </div>
                           <Zap className="w-5 h-5 text-[#F4B400]" />
@@ -253,9 +255,9 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <div className="text-[#1B4965]" style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1 }}>
-                              100+
+                              20+
                             </div>
-                            <div className="text-[#5A6B7C] mt-2" style={{ fontSize: '0.9375rem' }}>Procesos automatizados</div>
+                            <div className="text-[#5A6B7C] mt-2" style={{ fontSize: '0.9375rem' }}>{t('sobreTaskbot.visionStats.automatedProcesses')}</div>
                           </div>
                           <div className="w-12 h-12 bg-gradient-to-br from-[#1B4965] to-[#3A7D7C] rounded-lg flex items-center justify-center">
                             <Target className="w-6 h-6 text-white" />
@@ -263,7 +265,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </div>
                         <div className="flex items-center gap-2 text-[#2E7D6D] text-sm">
                           <TrendingUp className="w-4 h-4" />
-                          <span>+25% este año</span>
+                          <span>{t('sobreTaskbot.visionStats.growthThisYear')}</span>
                         </div>
                       </div>
 
@@ -276,7 +278,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                           <div className="text-[#3A7D7C]" style={{ fontSize: '1.75rem', fontWeight: 700 }}>
                             4-8
                           </div>
-                          <div className="text-[#5A6B7C] text-xs mt-1">Semanas</div>
+                          <div className="text-[#5A6B7C] text-xs mt-1">{t('sobreTaskbot.visionStats.weeks')}</div>
                         </div>
                         
                         <div className="bg-white border-2 border-[#2E7D6D]/20 rounded-lg p-4 shadow-lg hover:border-[#2E7D6D] transition-all">
@@ -284,20 +286,20 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                             <Zap className="w-5 h-5 text-[#2E7D6D]" />
                           </div>
                           <div className="text-[#2E7D6D]" style={{ fontSize: '1.75rem', fontWeight: 700 }}>
-                            85%
+                            70-90%
                           </div>
-                          <div className="text-[#5A6B7C] text-xs mt-1">Ahorro tiempo</div>
+                          <div className="text-[#5A6B7C] text-xs mt-1">{t('sobreTaskbot.visionStats.timeSaved')}</div>
                         </div>
                       </div>
 
                       {/* Progress card */}
                       <div className="bg-white border border-[#E1E5F0] rounded-lg p-4 shadow-md">
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-[#0D1B2A] text-sm" style={{ fontWeight: 600 }}>Tasa de éxito</span>
-                          <span className="text-[#2E7D6D]" style={{ fontWeight: 700 }}>98%</span>
+                          <span className="text-[#0D1B2A] text-sm" style={{ fontWeight: 600 }}>{t('sobreTaskbot.visionStats.successRate')}</span>
+                          <span className="text-[#2E7D6D]" style={{ fontWeight: 700 }}>95%+</span>
                         </div>
                         <div className="h-2 bg-[#E1E5F0] rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-[#3A7D7C] to-[#2E7D6D] rounded-full" style={{ width: '98%' }}></div>
+                          <div className="h-full bg-gradient-to-r from-[#3A7D7C] to-[#2E7D6D] rounded-full" style={{ width: '95%' }}></div>
                         </div>
                       </div>
 
@@ -307,14 +309,14 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                           <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                             <Heart className="w-5 h-5" />
                           </div>
-                          <span style={{ fontWeight: 600 }}>Impacto medible</span>
+                          <span style={{ fontWeight: 600 }}>{t('sobreTaskbot.visionStats.measurableImpact')}</span>
                         </div>
                         <div className="text-white/90 text-sm leading-relaxed">
-                          Clientes con ROI positivo desde semana 6-8
+                          {t('sobreTaskbot.visionStats.positiveROI')}
                         </div>
                         <div className="mt-3 pt-3 border-t border-white/20 flex items-center gap-2 text-white/80 text-xs">
                           <CheckCircle className="w-4 h-4" />
-                          <span>Resultados garantizados</span>
+                          <span>{t('sobreTaskbot.visionStats.guaranteedResults')}</span>
                         </div>
                       </div>
                     </div>
@@ -325,16 +327,16 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                 <div className="bg-white border-2 border-[#E1E5F0] p-12 lg:p-16 flex flex-col justify-center order-2 lg:order-2">
                   <div className="inline-block bg-[#1B4965]/5 border border-[#1B4965]/20 rounded-lg px-4 py-2 mb-6 w-fit">
                     <p className="text-[#1B4965] text-sm" style={{ fontWeight: 600, letterSpacing: '0.05em' }}>
-                      NUESTRA VISIÓN
+                      {t('sobreTaskbot.visionLabel')}
                     </p>
                   </div>
                   
                   <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '2rem', fontWeight: 700, lineHeight: 1.3 }}>
-                    Democratizar la automatización especializada
+                    {t('sobreTaskbot.visionTitle')}
                   </h3>
                   
                   <p className="text-[#5A6B7C] mb-6" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                    Queremos que cualquier empresa con procesos críticos pueda acceder a automatización de nivel enterprise. Creemos en un futuro donde la IA no es una caja negra, sino una herramienta auditable y transferible.
+                    {t('sobreTaskbot.visionText')}
                   </p>
 
                   <div className="space-y-3">
@@ -345,7 +347,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#0D1B2A]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        <strong>Accesibilidad:</strong> Automatización enterprise sin presupuestos enterprise
+                        <strong>{t('sobreTaskbot.visionPoint1Title')}</strong> {t('sobreTaskbot.visionPoint1')}
                       </p>
                     </div>
                     
@@ -356,7 +358,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#0D1B2A]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        <strong>Transparencia:</strong> Sistemas auditables que generas confianza y compliance
+                        <strong>{t('sobreTaskbot.visionPoint2Title')}</strong> {t('sobreTaskbot.visionPoint2')}
                       </p>
                     </div>
                     
@@ -367,7 +369,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                         </svg>
                       </div>
                       <p className="text-[#0D1B2A]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                        <strong>Transferibilidad:</strong> El conocimiento queda en tu empresa, siempre
+                        <strong>{t('sobreTaskbot.visionPoint3Title')}</strong> {t('sobreTaskbot.visionPoint3')}
                       </p>
                     </div>
                   </div>
@@ -383,10 +385,10 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Nuestros Valores
+              {t('sobreTaskbot.valuesTitle')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Los principios que guían nuestro trabajo
+              {t('sobreTaskbot.valuesSubtitle')}
             </p>
           </div>
 
@@ -414,13 +416,13 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-                Comprometidos con tu Éxito
+                {t('sobreTaskbot.commitmentTitle')}
               </h2>
               <p className="mt-6 text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                Desde nuestros inicios, hemos ayudado a decenas de empresas a transformar sus operaciones. Cada proyecto es una oportunidad para demostrar nuestro compromiso con la excelencia y la innovación.
+                {t('sobreTaskbot.commitmentText1')}
               </p>
               <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.7 }}>
-                No solo somos proveedores de tecnología, somos tus socios en el camino hacia la transformación digital.
+                {t('sobreTaskbot.commitmentText2')}
               </p>
             </div>
             <div>
@@ -453,7 +455,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                 Email
               </h3>
               <p className="text-[#E1E5F0]">
-                contacto@taskbot.pro
+                info@taskbot.pro
               </p>
             </Card>
 
@@ -463,7 +465,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                 Teléfono
               </h3>
               <p className="text-[#E1E5F0]">
-                +34 900 123 456
+                +34 91 101 2001
               </p>
             </Card>
 
@@ -473,7 +475,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                 Oficina
               </h3>
               <p className="text-[#E1E5F0]">
-                Madrid, España
+                Ferrol, A Coruña
               </p>
             </Card>
           </div>

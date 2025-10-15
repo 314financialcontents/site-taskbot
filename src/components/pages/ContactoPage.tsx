@@ -2,18 +2,38 @@ import { Mail, Phone, MapPin, Clock, CheckCircle, Copy } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface ContactoPageProps {
   onNavigate: (page: string) => void;
 }
 
 export function ContactoPage({ onNavigate }: ContactoPageProps) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText('contacto@taskbot.pro');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('info@taskbot.pro');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Fallback for browsers that don't support clipboard API
+      const textArea = document.createElement('textarea');
+      textArea.value = 'info@taskbot.pro';
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err2) {
+        console.error('Failed to copy:', err2);
+      }
+      document.body.removeChild(textArea);
+    }
   };
 
   return (
@@ -23,10 +43,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-              Contacta con nosotros
+              {t('contacto.title')}
             </h1>
             <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              ¿Tienes un proceso repetitivo que podría automatizarse? Envíanos un email y analizaremos si es candidato para automatización con agentes de IA.
+              {t('contacto.subtitle')}
             </p>
           </div>
         </div>
@@ -44,18 +64,18 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
               </div>
               
               <h2 style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1.2 }} className="mb-6">
-                Cuéntanos tu caso
+                {t('contacto.ctaTitle')}
               </h2>
               
               <p className="text-white/90 mb-8" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-                Envíanos un email con los detalles de tu proceso
+                {t('contacto.ctaSubtitle')}
               </p>
 
               {/* Email with copy button */}
               <div className="bg-white/10 rounded-xl p-6 inline-block">
                 <div className="flex items-center gap-4 justify-center">
                   <span style={{ fontSize: '1.5rem', fontWeight: 600 }} className="text-white">
-                    contacto@taskbot.pro
+                    info@taskbot.pro
                   </span>
                   <Button
                     onClick={copyEmail}
@@ -67,7 +87,7 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                 </div>
                 {copied && (
                   <p className="text-white/80 text-sm mt-2">
-                    ✓ Email copiado al portapapeles
+                    {t('contacto.emailCopied')}
                   </p>
                 )}
               </div>
@@ -80,7 +100,7 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <Card className="p-8 border-2 border-[#E1E5F0]">
               <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                ¿Qué incluir en tu email?
+                {t('contacto.whatToIncludeTitle')}
               </h3>
               
               <div className="space-y-4">
@@ -90,10 +110,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   </div>
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Tu empresa y contacto
+                      {t('contacto.includePoint1Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Nombre, empresa, email y teléfono de contacto
+                      {t('contacto.includePoint1')}
                     </p>
                   </div>
                 </div>

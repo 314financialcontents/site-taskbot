@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
+import { LanguageSelector } from './LanguageSelector';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface NavigationProps {
   currentPage: string;
@@ -9,13 +11,14 @@ interface NavigationProps {
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'que-hacemos', label: 'Qué hacemos' },
-    { id: 'como-lo-hacemos', label: 'Cómo lo hacemos' },
-    { id: 'sobre-taskbot', label: 'Sobre Taskbot' },
-    { id: 'blog', label: 'Blog' },
+    { id: 'home', label: t('nav.home') },
+    { id: 'que-hacemos', label: t('nav.queHacemos') },
+    { id: 'como-lo-hacemos', label: t('nav.comoLoHacemos') },
+    { id: 'sobre-taskbot', label: t('nav.sobreTaskbot') },
+    { id: 'blog', label: t('nav.blog') },
   ];
 
   const handleNavigate = (page: string) => {
@@ -38,7 +41,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -55,13 +58,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             ))}
           </div>
 
-          {/* CTA Button Desktop */}
-          <div className="hidden md:block">
+          {/* Language Selector & CTA Button Desktop */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSelector />
             <Button 
               onClick={() => handleNavigate('contacto')}
               className="bg-[#3A7D7C] hover:bg-[#2E7D6D] text-white"
             >
-              Contactar
+              {t('nav.contactar')}
             </Button>
           </div>
 
@@ -95,12 +99,15 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 {item.label}
               </button>
             ))}
+            <div className="pt-2 pb-2 flex justify-center">
+              <LanguageSelector />
+            </div>
             <div className="pt-2">
               <Button 
                 onClick={() => handleNavigate('contacto')}
                 className="w-full bg-[#3A7D7C] hover:bg-[#2E7D6D] text-white"
               >
-                Contactar
+                {t('nav.contactar')}
               </Button>
             </div>
           </div>

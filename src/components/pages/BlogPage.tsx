@@ -2,56 +2,81 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 interface BlogPageProps {
   onNavigate: (page: string) => void;
 }
 
 export function BlogPage({ onNavigate }: BlogPageProps) {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const { t } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState(t('blog.allCategories'));
 
   const blogPosts = [
     {
-      id: 'semantica-empresa',
-      title: 'Semántica en la empresa: cómo pasar del dato al significado operativo (y por qué la IA lo necesita)',
-      excerpt: 'Datos dispersos, integraciones frágiles y agentes de IA que piden aclaraciones. El problema de fondo suele ser falta de semántica compartida. Descubre cómo construir significado operativo en semanas, no meses.',
-      date: '9 Oct 2025',
-      readTime: '7 min',
-      category: 'Automatización',
+      id: 'robotica-hiperautomatizacion',
+      title: t('blog.posts.roboticaHiperautomatizacion.title'),
+      excerpt: t('blog.posts.roboticaHiperautomatizacion.excerpt'),
+      date: t('blog.posts.roboticaHiperautomatizacion.date'),
+      readTime: t('blog.posts.roboticaHiperautomatizacion.readTime'),
+      category: t('blog.posts.roboticaHiperautomatizacion.category'),
+      categories: t('blog.posts.roboticaHiperautomatizacion.categories'),
+      image: t('blog.posts.roboticaHiperautomatizacion.image'),
       featured: true,
     },
     {
+      id: 'semantica-empresa',
+      title: t('blog.posts.semanticaEmpresa.title'),
+      excerpt: t('blog.posts.semanticaEmpresa.excerpt'),
+      date: t('blog.posts.semanticaEmpresa.date'),
+      readTime: t('blog.posts.semanticaEmpresa.readTime'),
+      category: t('blog.posts.semanticaEmpresa.category'),
+      categories: t('blog.posts.semanticaEmpresa.categories'),
+      image: t('blog.posts.semanticaEmpresa.image'),
+      featured: false,
+    },
+    {
       id: 'guardarrailes-ia-guia-practica',
-      title: 'Guardarraíles de IA: guía práctica para que tus agentes trabajen seguros (y sin sustos)',
-      excerpt: 'Los guardarraíles no limitan a tus agentes, los guían. Descubre cómo implementar capas de control para que tus agentes de IA operen con seguridad, cumplan políticas y protejan tu marca sin perder autonomía ni eficiencia.',
-      date: '9 Oct 2025',
-      readTime: '10 min',
-      category: 'IA',
+      title: t('blog.posts.guardarrailesIA.title'),
+      excerpt: t('blog.posts.guardarrailesIA.excerpt'),
+      date: t('blog.posts.guardarrailesIA.date'),
+      readTime: t('blog.posts.guardarrailesIA.readTime'),
+      category: t('blog.posts.guardarrailesIA.category'),
+      categories: t('blog.posts.guardarrailesIA.categories'),
+      image: t('blog.posts.guardarrailesIA.image'),
       featured: false,
     },
     {
       id: 'del-know-how-al-flujo',
-      title: 'Del know-how al flujo: convierte tareas repetitivas en ejecución autónoma',
-      excerpt: 'La mayoría de empresas guardan su mayor activo en la cabeza del equipo: el "saber hacer". Funciona… hasta que el volumen sube, aparecen errores o el personal cambia. Te guiamos para pasar de conocimiento implícito a ejecución autónoma y trazable.',
-      date: '2 Oct 2025',
-      readTime: '12 min',
-      category: 'Automatización',
+      title: t('blog.posts.delKnowHowAlFlujo.title'),
+      excerpt: t('blog.posts.delKnowHowAlFlujo.excerpt'),
+      date: t('blog.posts.delKnowHowAlFlujo.date'),
+      readTime: t('blog.posts.delKnowHowAlFlujo.readTime'),
+      category: t('blog.posts.delKnowHowAlFlujo.category'),
+      categories: t('blog.posts.delKnowHowAlFlujo.categories'),
+      image: t('blog.posts.delKnowHowAlFlujo.image'),
       featured: false,
     },
   ];
 
   const categories = [
-    'Todos',
-    'Automatización',
-    'IA',
-    'Casos de éxito',
-    'Tendencias',
+    t('blog.allCategories'),
+    t('blog.categories.automation'),
+    t('blog.categories.robotics'),
+    t('blog.categories.sensorization'),
+    t('blog.categories.trends'),
+    t('blog.categories.ai'),
+    t('blog.categories.semantics'),
+    t('blog.categories.integrations'),
+    t('blog.categories.security'),
+    t('blog.categories.methodology'),
   ];
 
-  // Filtrar posts según la categoría seleccionada
-  const filteredPosts = selectedCategory === 'Todos' 
+  // Filtrar posts según la categoría seleccionada (usando el array de categorías)
+  const filteredPosts = selectedCategory === t('blog.allCategories')
     ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    : blogPosts.filter(post => post.categories.includes(selectedCategory));
 
   return (
     <div className="min-h-screen bg-white">
@@ -60,10 +85,10 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-              Blog
+              {t('blog.title')}
             </h1>
             <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-              Insights, guías prácticas y tendencias sobre automatización inteligente e hiperautomatización para empresas.
+              {t('blog.subtitle')}
             </p>
           </div>
         </div>
@@ -97,7 +122,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
           {filteredPosts.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-                No hay artículos en esta categoría todavía.
+                {t('blog.noArticles')}
               </p>
             </div>
           ) : (
@@ -108,13 +133,49 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                 className="overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer"
                 onClick={() => onNavigate(`blog/${post.id}`)}
               >
-                {/* Image placeholder with gradient */}
-                <div className="h-48 bg-gradient-to-br from-[#1B4965] to-[#3A7D7C] flex items-center justify-center">
-                  <div className="text-white text-center p-6">
-                    <p style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                      {post.category}
-                    </p>
-                  </div>
+                {/* Image with overlay */}
+                <div className="relative h-48 overflow-hidden">
+                  {post.image ? (
+                    <>
+                      <ImageWithFallback
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* Blue overlay matching the post header */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/90 via-[#1B4965]/85 to-[#3A7D7C]/80"></div>
+                      {/* Categories */}
+                      <div className="absolute inset-0 flex items-end justify-center p-6">
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {post.categories.map((cat: string) => (
+                            <span 
+                              key={cat}
+                              className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm text-white"
+                              style={{ fontSize: '0.875rem', fontWeight: 600 }}
+                            >
+                              {cat}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="h-48 bg-gradient-to-br from-[#1B4965] to-[#3A7D7C] flex items-center justify-center">
+                      <div className="text-white text-center p-6">
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {post.categories.map((cat: string) => (
+                            <span 
+                              key={cat}
+                              className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm"
+                              style={{ fontSize: '0.875rem', fontWeight: 600 }}
+                            >
+                              {cat}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6">
@@ -142,7 +203,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
 
                   {/* Read more */}
                   <div className="flex items-center text-[#3A7D7C] group-hover:text-[#2E7D6D] transition-colors" style={{ fontWeight: 600 }}>
-                    <span>Leer más</span>
+                    <span>{t('blog.readMore')}</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

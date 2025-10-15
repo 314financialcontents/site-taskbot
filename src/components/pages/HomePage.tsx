@@ -1,75 +1,77 @@
-import { ArrowRight, Clock, ShieldAlert, Lightbulb, Target, AlertCircle, Gauge, BookOpen, Zap, Search, Settings, PlayCircle, TrendingUp, CheckCircle, FileText, Users, Database, X } from 'lucide-react';
+import { ArrowRight, Clock, ShieldAlert, Lightbulb, Target, AlertCircle, Gauge, BookOpen, Zap, Search, Settings, PlayCircle, TrendingUp, CheckCircle, FileText, Users, Database, X, Package } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
+  const { t } = useLanguage();
   const heroFeatures = [
     {
       icon: <Clock className="w-6 h-6" />,
-      title: 'Ahorra tiempo',
-      description: 'Libera a tu equipo de tareas tediosas del día a día.',
+      title: t('home.heroFeatures.saveTime.title'),
+      description: t('home.heroFeatures.saveTime.description'),
     },
     {
       icon: <ShieldAlert className="w-6 h-6" />,
-      title: 'Evita errores',
-      description: 'Cada proceso sigue validaciones y límites predefinidos.',
+      title: t('home.heroFeatures.avoidErrors.title'),
+      description: t('home.heroFeatures.avoidErrors.description'),
     },
     {
       icon: <Lightbulb className="w-6 h-6" />,
-      title: 'Capitaliza tu conocimiento',
-      description: 'Tus procesos quedan documentados y mejorados continuamente.',
+      title: t('home.heroFeatures.capitalizeKnowledge.title'),
+      description: t('home.heroFeatures.capitalizeKnowledge.description'),
     },
   ];
 
   const stats = [
     {
       value: '85%',
-      label: 'Menos tiempo en tareas repetitivas',
+      label: t('home.stats.lessTime'),
       icon: <Clock className="w-6 h-6" />,
     },
     {
       value: '95%',
-      label: 'Precisión en validaciones automáticas',
+      label: t('home.stats.precision'),
       icon: <Target className="w-6 h-6" />,
     },
     {
       value: '4-8',
-      label: 'Semanas hasta resultados tangibles',
+      label: t('home.stats.weeks'),
       icon: <Zap className="w-6 h-6" />,
     },
     {
       value: '40h/mes',
-      label: 'Ahorro promedio por persona',
+      label: t('home.stats.saving'),
       icon: <TrendingUp className="w-6 h-6" />,
     },
   ];
 
   const useCases = [
     {
-      title: 'Revisión y validación de facturas',
-      before: '2h/día revisando facturas manualmente',
-      after: 'Validación automática con alertas solo de excepciones',
-      saving: '8-10h/semana por persona',
+      title: t('home.useCases.invoice.title'),
+      before: t('home.useCases.invoice.before'),
+      after: t('home.useCases.invoice.after'),
+      saving: t('home.useCases.invoice.saving'),
       icon: <FileText className="w-8 h-8" />,
     },
     {
-      title: 'Onboarding de clientes',
-      before: '40 minutos por cliente (datos, validaciones, setup)',
-      after: '4 minutos (solo verificación final)',
-      saving: '90% del tiempo del equipo comercial',
-      icon: <Users className="w-8 h-8" />,
+      title: t('home.useCases.inventory.title'),
+      before: t('home.useCases.inventory.before'),
+      after: t('home.useCases.inventory.after'),
+      saving: t('home.useCases.inventory.saving'),
+      icon: <Package className="w-8 h-8" />,
     },
     {
-      title: 'Generación de reportes regulatorios',
-      before: '6h cada viernes + riesgo de errores',
-      after: 'Reporte automático listo cada lunes a las 9am',
-      saving: '24h/mes + 0 errores de compliance',
+      title: t('home.useCases.reports.title'),
+      before: t('home.useCases.reports.before'),
+      after: t('home.useCases.reports.after'),
+      saving: t('home.useCases.reports.saving'),
       icon: <Database className="w-8 h-8" />,
     },
   ];
@@ -77,66 +79,66 @@ export function HomePage({ onNavigate }: HomePageProps) {
   const benefits = [
     {
       icon: <Target className="w-8 h-8" />,
-      title: 'Automatización especializada para tu sector',
-      description: 'Agentes que entienden las reglas específicas de tu negocio, no soluciones genéricas. Cada proceso se adapta a tu experiencia y conocimiento.',
+      title: t('home.benefits.specialized.title'),
+      description: t('home.benefits.specialized.description'),
     },
     {
       icon: <AlertCircle className="w-8 h-8" />,
-      title: 'Sin caja negra: trazabilidad total',
-      description: 'Cada decisión del agente es auditable. Registro completo de todas las acciones (quién, qué, cuándo y resultado) para cumplimiento normativo y mejora continua.',
+      title: t('home.benefits.transparency.title'),
+      description: t('home.benefits.transparency.description'),
     },
     {
       icon: <Gauge className="w-8 h-8" />,
-      title: 'Sin rehacer tu infraestructura',
-      description: 'Se integra con tus sistemas actuales (ERP, CRM, Excel) o funciona de forma independiente. No necesitas migrar nada.',
+      title: t('home.benefits.integration.title'),
+      description: t('home.benefits.integration.description'),
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
-      title: 'Activos internos transferibles',
-      description: 'Entregamos flujos configurados, plantillas reutilizables y documentación completa. El conocimiento queda en tu empresa para que puedas replicarlo.',
+      title: t('home.benefits.assets.title'),
+      description: t('home.benefits.assets.description'),
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: 'De piloto a producción en semanas',
-      description: 'Metodología probada para pasar de análisis a ejecución autónoma en 4–8 semanas con resultados medibles desde el día uno.',
+      title: t('home.benefits.speed.title'),
+      description: t('home.benefits.speed.description'),
     },
   ];
 
   const steps = [
     {
-      number: '01',
+      number: t('home.howItWorks.discovery.number'),
       icon: <Search className="w-10 h-10" />,
-      title: 'Descubrimiento del proceso',
-      description: 'Analizamos tus tareas repetitivas, mapeamos el dominio y definimos entradas, salidas y reglas clave de tu negocio.',
+      title: t('home.howItWorks.discovery.title'),
+      description: t('home.howItWorks.discovery.description'),
     },
     {
-      number: '02',
+      number: t('home.howItWorks.configuration.number'),
       icon: <Settings className="w-10 h-10" />,
-      title: 'Configuración e integración',
-      description: 'Creamos flujos inteligentes específicos para tu negocio y configuramos agentes con validaciones automáticas. Nos conectamos a tus sistemas o funcionamos independientemente.',
+      title: t('home.howItWorks.configuration.title'),
+      description: t('home.howItWorks.configuration.description'),
     },
     {
-      number: '03',
+      number: t('home.howItWorks.execution.number'),
       icon: <PlayCircle className="w-10 h-10" />,
-      title: 'Ejecución verificable',
-      description: 'El agente ejecuta tareas autónomamente dentro de límites acordados. Verificación automática en cada ciclo, con trazabilidad completa y mejora continua.',
+      title: t('home.howItWorks.execution.title'),
+      description: t('home.howItWorks.execution.description'),
     },
   ];
 
   const diyChallenges = [
-    'Curva de aprendizaje en agentes y prompts especializados',
-    'Construcción de flujos personalizados y mapeo de procesos',
-    'Diseño de validaciones automáticas y controles robustos',
-    'Infraestructura de logs, trazabilidad y monitorización',
-    'Mantenimiento continuo ante cambios en APIs o requisitos',
+    t('home.diyVsTaskbot.diyChallenge1'),
+    t('home.diyVsTaskbot.diyChallenge2'),
+    t('home.diyVsTaskbot.diyChallenge3'),
+    t('home.diyVsTaskbot.diyChallenge4'),
+    t('home.diyVsTaskbot.diyChallenge5'),
   ];
 
   const taskbotAdvantages = [
-    'Metodología probada en múltiples dominios especializados',
-    'Resultados en 4-8 semanas vs. 4-6 meses internamente',
-    'Equipo especializado en automatización con agentes de IA',
-    'Documentación y activos transferibles para replicar después',
-    'Soporte post-lanzamiento para ajustes y evolución',
+    t('home.diyVsTaskbot.taskbotAdvantage1'),
+    t('home.diyVsTaskbot.taskbotAdvantage2'),
+    t('home.diyVsTaskbot.taskbotAdvantage3'),
+    t('home.diyVsTaskbot.taskbotAdvantage4'),
+    t('home.diyVsTaskbot.taskbotAdvantage5'),
   ];
 
   return (
@@ -149,17 +151,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="space-y-6">
               <div>
                 <h1 className="text-[#E1E5F0]" style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2 }}>
-                  Convierte tu know-how en <span className="text-[#3A7D7C]">ejecución automática</span>
+                  {t('home.hero.title')} <span className="text-[#3A7D7C]">{t('home.hero.titleHighlight')}</span>
                 </h1>
                 <p className="mt-6 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-                  Agentes de IA que automatizan tus procesos repetitivos con validaciones automáticas, controles de seguridad y trazabilidad completa. Sin caja negra. Sin rehacer tus sistemas actuales.
+                  {t('home.hero.subtitle')}
                 </p>
               </div>
 
               {/* Technical highlight */}
               <div className="p-4 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm">
                 <p className="text-[#E1E5F0]" style={{ lineHeight: 1.6 }}>
-                  <strong className="text-white">Automatización especializada para tu negocio:</strong> Mapeamos tus procesos, creamos flujos inteligentes y conectamos agentes con límites controlados para generar resultados verificables que tú supervisas.
+                  <strong className="text-white">{t('home.hero.technicalHighlight')}</strong> {t('home.hero.technicalDescription')}
                 </p>
               </div>
 
@@ -188,7 +190,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   className="bg-[#3A7D7C] hover:bg-[#2E7D6D] text-white px-10 py-6 shadow-xl shadow-[#3A7D7C]/20"
                   style={{ fontSize: '1.25rem' }}
                 >
-                  Agenda tu demo gratuita <ArrowRight className="ml-2 w-5 h-5" />
+                  {t('home.hero.cta')} <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
             </div>
@@ -220,10 +222,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-[#0D1B2A] mb-3" style={{ fontSize: '2rem', fontWeight: 700 }}>
-              Impacto medible desde el primer mes
+              {t('home.statsSection.title')}
             </h2>
             <p className="text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Resultados reales de clientes en producción
+              {t('home.statsSection.subtitle')}
             </p>
           </div>
 
@@ -249,20 +251,39 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Trust / Social Proof Section */}
       <section className="py-12 bg-white border-y border-[#E1E5F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.6 }}>
-              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>Con la confianza de empresas medianas y grandes</span> que han dado el salto de procesos manuales a automatización inteligente
+            <h3 className="text-[#1B4965] mb-3" style={{ fontSize: '1.375rem', fontWeight: 600 }}>
+              {t('home.trust.main')}
+            </h3>
+            <p className="text-[#5A6B7C] mb-6" style={{ fontSize: '1.0625rem', lineHeight: 1.7 }}>
+              {t('home.trust.description')}
             </p>
-            <p className="mt-2 text-[#5A6B7C]">
-              Contabilidad, servicios legales, logística y operaciones técnicas ya operan con Taskbot.pro
-            </p>
-            <div className="mt-6 flex justify-center gap-4 flex-wrap">
-              <Badge className="bg-[#1B4965] text-white px-4 py-2">Contabilidad</Badge>
-              <Badge className="bg-[#1B4965] text-white px-4 py-2">Legal</Badge>
-              <Badge className="bg-[#1B4965] text-white px-4 py-2">Logística</Badge>
-              <Badge className="bg-[#1B4965] text-white px-4 py-2">Consultoría</Badge>
-              <Badge className="bg-[#1B4965] text-white px-4 py-2">Operaciones técnicas</Badge>
+            
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.accounting')}
+              </span>
+              <span className="text-[#E1E5F0]">•</span>
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.legal')}
+              </span>
+              <span className="text-[#E1E5F0]">•</span>
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.logistics')}
+              </span>
+              <span className="text-[#E1E5F0]">•</span>
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.warehouse')}
+              </span>
+              <span className="text-[#E1E5F0]">•</span>
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.hospitality')}
+              </span>
+              <span className="text-[#E1E5F0]">•</span>
+              <span className="text-[#1B4965]" style={{ fontWeight: 600 }}>
+                {t('home.trust.badges.technical')}
+              </span>
             </div>
           </div>
         </div>
@@ -273,10 +294,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              ¿Te suena familiar alguno de estos escenarios?
+              {t('home.useCases.titleQuestion')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Casos reales de automatización con agentes de IA
+              {t('home.useCases.subtitle')}
             </p>
           </div>
 
@@ -296,7 +317,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     <div className="flex items-start gap-2">
                       <X className="w-5 h-5 text-[#C0392B] flex-shrink-0 mt-0.5" />
                       <p className="text-[#5A6B7C]" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                        <strong className="text-[#C0392B]">Antes:</strong> {useCase.before}
+                        <strong className="text-[#C0392B]">{t('home.useCases.before')}</strong> {useCase.before}
                       </p>
                     </div>
                   </div>
@@ -305,7 +326,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     <div className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-[#2E7D6D] flex-shrink-0 mt-0.5" />
                       <p className="text-[#5A6B7C]" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                        <strong className="text-[#2E7D6D]">Ahora:</strong> {useCase.after}
+                        <strong className="text-[#2E7D6D]">{t('home.useCases.after')}</strong> {useCase.after}
                       </p>
                     </div>
                   </div>
@@ -313,7 +334,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <div className="pt-4 mt-auto border-t border-[#E1E5F0]">
                     <div className="bg-[#2E7D6D]/10 rounded-lg p-3">
                       <p className="text-[#2E7D6D]" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                        💡 Ahorro: {useCase.saving}
+                        💡 {t('home.useCases.savingLabel')} {useCase.saving}
                       </p>
                     </div>
                   </div>
@@ -324,14 +345,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <div className="text-center mt-12">
             <p className="text-[#5A6B7C] mb-6" style={{ fontSize: '1.125rem' }}>
-              ¿Tienes un proceso similar? Analicemos si es candidato para automatización
+              {t('home.useCases.similarProcess')}
             </p>
             <Button 
               onClick={() => onNavigate('contacto')}
               className="bg-[#1B4965] hover:bg-[#0D1B2A] text-white px-8 py-6"
               style={{ fontSize: '1.125rem' }}
             >
-              Evalúa tu proceso (gratuito) <ArrowRight className="ml-2 w-5 h-5" />
+              {t('home.useCases.evaluateCta')} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -342,10 +363,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Por qué Taskbot.pro es diferente
+              {t('home.benefits.title')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              Automatización especializada, no flujos genéricos
+              {t('home.benefits.subtitle')}
             </p>
           </div>
 
@@ -374,10 +395,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Cómo funciona
+              {t('home.howItWorks.title')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem' }}>
-              De análisis a producción en 3 fases claras
+              {t('home.howItWorks.subtitle')}
             </p>
           </div>
 
@@ -412,7 +433,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="bg-[#1B4965] hover:bg-[#0D1B2A] text-white px-8 py-6"
               style={{ fontSize: '1.125rem' }}
             >
-              Ver metodología detallada <ArrowRight className="ml-2 w-5 h-5" />
+              {t('home.howItWorks.seeMethodology')} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -423,10 +444,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-[#0D1B2A]" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              ¿Hacerlo internamente o contratar?
+              {t('home.diyVsTaskbot.title')}
             </h2>
             <p className="mt-4 text-[#5A6B7C]" style={{ fontSize: '1.125rem', lineHeight: 1.6 }}>
-              Una pregunta justa que merece una respuesta honesta
+              {t('home.diyVsTaskbot.subtitle')}
             </p>
           </div>
 
@@ -434,7 +455,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {/* DIY */}
             <Card className="p-8 bg-[#E1E5F0]/50 border-2 border-[#E1E5F0]">
               <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                Hacerlo con tu equipo
+                {t('home.diyVsTaskbot.diyTitle')}
               </h3>
               
               <div className="space-y-3 mb-6">
@@ -450,10 +471,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
               <div className="bg-white rounded-lg p-4 border-l-4 border-[#F4B400]">
                 <p className="text-[#0D1B2A]" style={{ fontWeight: 600, fontSize: '1rem' }}>
-                  Estimación realista:
+                  {t('home.diyVsTaskbot.diyEstimate')}
                 </p>
                 <p className="text-[#5A6B7C] mt-2" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                  150-250 horas de trabajo especializado = 4-6 meses a tiempo parcial (si es tu primer proyecto con agentes, añade +40-60% por curva de aprendizaje)
+                  {t('home.diyVsTaskbot.diyEstimateText')}
                 </p>
               </div>
             </Card>
@@ -461,7 +482,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {/* Taskbot */}
             <Card className="p-8 bg-gradient-to-br from-[#1B4965]/5 to-[#3A7D7C]/5 border-2 border-[#3A7D7C]">
               <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                Contratar Taskbot.pro
+                {t('home.diyVsTaskbot.taskbotTitle')}
               </h3>
               
               <div className="space-y-3 mb-6">
@@ -477,10 +498,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
               <div className="bg-[#3A7D7C] rounded-lg p-4 text-white">
                 <p style={{ fontWeight: 600, fontSize: '1rem' }}>
-                  Resultados garantizados:
+                  {t('home.diyVsTaskbot.taskbotResults')}
                 </p>
                 <p className="mt-2 opacity-90" style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>
-                  Piloto en producción en 4-8 semanas + documentación completa + activos transferibles para que puedas replicar internamente después
+                  {t('home.diyVsTaskbot.taskbotResultsText')}
                 </p>
               </div>
             </Card>
@@ -488,13 +509,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <div className="bg-gradient-to-br from-[#1B4965]/10 to-[#3A7D7C]/10 border-l-4 border-[#3A7D7C] rounded-lg p-8">
             <h3 className="text-[#1B4965] mb-4" style={{ fontSize: '1.25rem', fontWeight: 600 }}>
-              Nuestra recomendación honesta
+              {t('home.diyVsTaskbot.recommendationTitle')}
             </h3>
             <p className="text-[#0D1B2A] mb-4" style={{ fontSize: '1.0625rem', lineHeight: 1.7 }}>
-              Si este es tu <strong>primer proceso con agentes de IA</strong>, tienes <strong>presión por resultados</strong> y <strong>equipo limitado</strong>, contratar tiene más sentido. Una vez tengas el primer piloto funcionando y el equipo formado, puedes evaluar hacer los siguientes internamente.
+              {t('home.diyVsTaskbot.recommendationText1')}
             </p>
             <p className="text-[#5A6B7C]" style={{ fontSize: '1rem', lineHeight: 1.7 }}>
-              No es todo o nada: muchos clientes empiezan con nosotros y luego hibridan. Te entregamos todo el conocimiento para que tengas esa opción.
+              {t('home.diyVsTaskbot.recommendationText2')}
             </p>
           </div>
         </div>
@@ -504,10 +525,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-20 bg-gradient-to-r from-[#1B4965] to-[#3A7D7C] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-            Empieza hoy, ahorrarás horas en 30 días
+            {t('home.finalCta.title')}
           </h2>
           <p className="mt-4 text-[#E1E5F0]" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-            Agenda tu análisis gratuito y descubre si tu proceso es candidato para automatización con agentes de IA
+            {t('home.finalCta.subtitle')}
           </p>
           
           <div className="mt-8">
@@ -516,19 +537,19 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="bg-white text-[#1B4965] hover:bg-[#E1E5F0] px-10 py-6"
               style={{ fontSize: '1.125rem' }}
             >
-              Reserva tu demo personalizada <ArrowRight className="ml-2 w-5 h-5" />
+              {t('home.finalCta.button')} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
 
           <div className="mt-10 pt-8 border-t border-white/20">
             <p className="text-[#E1E5F0]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-              ¿Quieres entender primero si tu proceso es candidato para automatización?{' '}
+              {t('home.finalCta.learnFirst')}{' '}
               <button 
                 onClick={() => onNavigate('blog/del-know-how-al-flujo')}
                 className="underline hover:text-white transition-colors"
                 style={{ fontWeight: 600 }}
               >
-                Lee nuestra guía práctica paso a paso
+                {t('home.finalCta.readGuide')}
               </button>
             </p>
           </div>

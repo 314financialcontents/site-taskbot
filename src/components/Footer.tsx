@@ -2,6 +2,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import innovaPemeImg from 'figma:asset/a830e676ae6ab941a73b754fb2357f09e50433e8.png';
 import igapeImg from 'figma:asset/59add9222fd85bf4d54b2ea4be07d733ca0a1034.png';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -9,20 +10,21 @@ interface FooterProps {
 
 export function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const footerLinks = {
     empresa: [
-      { label: 'Qué hacemos', page: 'que-hacemos' },
-      { label: 'Cómo lo hacemos', page: 'como-lo-hacemos' },
-      { label: 'Sobre Taskbot', page: 'sobre-taskbot' },
+      { label: t('nav.queHacemos'), page: 'que-hacemos' },
+      { label: t('nav.comoLoHacemos'), page: 'como-lo-hacemos' },
+      { label: t('nav.sobreTaskbot'), page: 'sobre-taskbot' },
     ],
     recursos: [
-      { label: 'Blog', page: 'blog' },
+      { label: t('nav.blog'), page: 'blog' },
     ],
     legal: [
-      { label: 'Aviso legal', page: 'aviso-legal' },
-      { label: 'Política de privacidad', page: 'politica-privacidad' },
-      { label: 'Política de cookies', page: 'politica-cookies' },
+      { label: t('footer.avisoLegal'), page: 'aviso-legal' },
+      { label: t('footer.politicaPrivacidad'), page: 'politica-privacidad' },
+      { label: t('footer.politicaCookies'), page: 'politica-cookies' },
     ],
   };
 
@@ -32,7 +34,7 @@ export function Footer({ onNavigate }: FooterProps) {
         {/* Sección de Ayudas */}
         <div className="mb-12 pb-12 border-b border-[#1B4965]">
           <p className="text-center text-[#E1E5F0] opacity-80 mb-8">
-            Nuestra empresa se ha beneficiado de las siguientes ayudas:
+            {t('footer.ayudas')}
           </p>
           
           {/* Primera fila: 2 logos en columnas */}
@@ -68,7 +70,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </span>
             </div>
             <p className="text-[#E1E5F0] opacity-80 mb-4">
-              Automatización inteligente para empresas que quieren crecer.
+              {t('footer.tagline')}
             </p>
             {/* Social Media Links - Hidden temporarily */}
             {/* <div className="flex gap-3">
@@ -90,7 +92,7 @@ export function Footer({ onNavigate }: FooterProps) {
           {/* Links Columns */}
           <div>
             <h3 className="mb-4" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-              Empresa
+              {t('footer.company')}
             </h3>
             <ul className="space-y-2">
               {footerLinks.empresa.map((link, index) => (
@@ -108,7 +110,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
           <div>
             <h3 className="mb-4" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-              Recursos
+              {t('footer.resources')}
             </h3>
             <ul className="space-y-2">
               {footerLinks.recursos.map((link, index) => (
@@ -126,7 +128,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
           <div>
             <h3 className="mb-4" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-              Legal
+              {t('footer.legal')}
             </h3>
             <ul className="space-y-2">
               {footerLinks.legal.map((link, index) => (
@@ -145,7 +147,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
         {/* Copyright */}
         <div className="border-t border-[#1B4965] pt-8 text-center text-[#E1E5F0] opacity-70">
-          <p>© {currentYear} Taskbot.pro. Todos los derechos reservados.</p>
+          <p>© {currentYear} Taskbot.pro. {t('footer.copyright')}</p>
         </div>
       </div>
     </footer>

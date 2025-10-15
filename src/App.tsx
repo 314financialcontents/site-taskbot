@@ -11,6 +11,7 @@ import { BlogPostPage } from './components/pages/BlogPostPage';
 import { AvisoLegalPage } from './components/pages/AvisoLegalPage';
 import { PoliticaPrivacidadPage } from './components/pages/PoliticaPrivacidadPage';
 import { PoliticaCookiesPage } from './components/pages/PoliticaCookiesPage';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -38,6 +39,8 @@ export default function App() {
         return <ContactoPage onNavigate={handleNavigate} />;
       case 'blog':
         return <BlogPage onNavigate={handleNavigate} />;
+      case 'blog/robotica-hiperautomatizacion':
+        return <BlogPostPage onNavigate={handleNavigate} postId="robotica-hiperautomatizacion" />;
       case 'blog/semantica-empresa':
         return <BlogPostPage onNavigate={handleNavigate} postId="semantica-empresa" />;
       case 'blog/del-know-how-al-flujo':
@@ -56,12 +59,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-      <main className="flex-grow">
-        {renderPage()}
-      </main>
-      <Footer onNavigate={handleNavigate} />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col">
+        <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+        <main className="flex-grow">
+          {renderPage()}
+        </main>
+        <Footer onNavigate={handleNavigate} />
+      </div>
+    </LanguageProvider>
   );
 }
