@@ -3,11 +3,13 @@ import { Button } from '../ui/button';
 import { BlogPostGuardarrailesIA } from './BlogPostGuardarrailesIA';
 import { BlogPostSemanticaEmpresa } from './BlogPostSemanticaEmpresa';
 import { BlogPostRoboticaHiperautomatizacion } from './BlogPostRoboticaHiperautomatizacion';
+import { BlogPostLogicaSemantica } from './BlogPostLogicaSemantica';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import type { RouteKey } from '../../utils/routes';
 
 interface BlogPostPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
   postId?: string;
 }
 
@@ -17,6 +19,11 @@ export function BlogPostPage({ onNavigate, postId }: BlogPostPageProps) {
   // If it's the robotica post, render the dedicated component
   if (postId === 'robotica-hiperautomatizacion') {
     return <BlogPostRoboticaHiperautomatizacion onNavigate={onNavigate} />;
+  }
+
+  // If it's the logica-semantica post, render the dedicated component
+  if (postId === 'logica-semantica') {
+    return <BlogPostLogicaSemantica onNavigate={onNavigate} />;
   }
 
   // If it's the guardarrailes post, render the dedicated component

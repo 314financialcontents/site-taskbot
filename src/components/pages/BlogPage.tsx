@@ -4,9 +4,10 @@ import { Button } from '../ui/button';
 import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import type { RouteKey } from '../../utils/routes';
 
 interface BlogPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function BlogPage({ onNavigate }: BlogPageProps) {
@@ -20,10 +21,19 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
       excerpt: t('blog.posts.roboticaHiperautomatizacion.excerpt'),
       date: t('blog.posts.roboticaHiperautomatizacion.date'),
       readTime: t('blog.posts.roboticaHiperautomatizacion.readTime'),
-      category: t('blog.posts.roboticaHiperautomatizacion.category'),
-      categories: t('blog.posts.roboticaHiperautomatizacion.categories'),
-      image: t('blog.posts.roboticaHiperautomatizacion.image'),
+      tags: [t('blog.categories.robotics'), t('blog.categories.automation'), t('blog.categories.sensorization')],
+      image: 'https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwcm9ib3QlMjBhdXRvbWF0aW9ufGVufDF8fHx8MTc2MDY5NjQyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       featured: true,
+    },
+    {
+      id: 'logica-semantica',
+      title: t('blog.posts.logicaSemantica.title'),
+      excerpt: t('blog.posts.logicaSemantica.excerpt'),
+      date: t('blog.posts.logicaSemantica.date'),
+      readTime: t('blog.posts.logicaSemantica.readTime'),
+      tags: [t('blog.categories.ai'), t('blog.categories.automation'), t('blog.categories.methodology'), t('blog.categories.semantics'), t('blog.categories.integrations')],
+      image: 'https://images.unsplash.com/photo-1664526936810-ec0856d31b92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZW1hbnRpYyUyMG5ldHdvcmslMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2MDcwMzU3OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      featured: false,
     },
     {
       id: 'semantica-empresa',
@@ -31,9 +41,8 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
       excerpt: t('blog.posts.semanticaEmpresa.excerpt'),
       date: t('blog.posts.semanticaEmpresa.date'),
       readTime: t('blog.posts.semanticaEmpresa.readTime'),
-      category: t('blog.posts.semanticaEmpresa.category'),
-      categories: t('blog.posts.semanticaEmpresa.categories'),
-      image: t('blog.posts.semanticaEmpresa.image'),
+      tags: [t('blog.categories.automation'), t('blog.categories.ai'), t('blog.categories.semantics'), t('blog.categories.integrations')],
+      image: 'https://images.unsplash.com/photo-1691643158804-d3f02eb456a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGRhdGElMjBhbmFseXNpc3xlbnwxfHx8fDE3NjA2NDE4OTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       featured: false,
     },
     {
@@ -42,20 +51,8 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
       excerpt: t('blog.posts.guardarrailesIA.excerpt'),
       date: t('blog.posts.guardarrailesIA.date'),
       readTime: t('blog.posts.guardarrailesIA.readTime'),
-      category: t('blog.posts.guardarrailesIA.category'),
-      categories: t('blog.posts.guardarrailesIA.categories'),
-      image: t('blog.posts.guardarrailesIA.image'),
-      featured: false,
-    },
-    {
-      id: 'del-know-how-al-flujo',
-      title: t('blog.posts.delKnowHowAlFlujo.title'),
-      excerpt: t('blog.posts.delKnowHowAlFlujo.excerpt'),
-      date: t('blog.posts.delKnowHowAlFlujo.date'),
-      readTime: t('blog.posts.delKnowHowAlFlujo.readTime'),
-      category: t('blog.posts.delKnowHowAlFlujo.category'),
-      categories: t('blog.posts.delKnowHowAlFlujo.categories'),
-      image: t('blog.posts.delKnowHowAlFlujo.image'),
+      tags: [t('blog.categories.ai'), t('blog.categories.security'), t('blog.categories.methodology')],
+      image: 'https://images.unsplash.com/photo-1639503547276-90230c4a4198?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMHNlY3VyaXR5JTIwY29udHJvbHxlbnwxfHx8fDE3NjA3MDM1Nzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       featured: false,
     },
   ];
@@ -73,10 +70,10 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
     t('blog.categories.methodology'),
   ];
 
-  // Filtrar posts según la categoría seleccionada (usando el array de categorías)
+  // Filtrar posts según la categoría seleccionada (usando el array de tags)
   const filteredPosts = selectedCategory === t('blog.allCategories')
     ? blogPosts 
-    : blogPosts.filter(post => post.categories.includes(selectedCategory));
+    : blogPosts.filter(post => post.tags.includes(selectedCategory));
 
   return (
     <div className="min-h-screen bg-white">
@@ -144,10 +141,10 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                       />
                       {/* Blue overlay matching the post header */}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/90 via-[#1B4965]/85 to-[#3A7D7C]/80"></div>
-                      {/* Categories */}
+                      {/* Tags */}
                       <div className="absolute inset-0 flex items-end justify-center p-6">
                         <div className="flex flex-wrap gap-2 justify-center">
-                          {post.categories.map((cat: string) => (
+                          {post.tags.map((cat: string) => (
                             <span 
                               key={cat}
                               className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm text-white"
@@ -163,7 +160,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                     <div className="h-48 bg-gradient-to-br from-[#1B4965] to-[#3A7D7C] flex items-center justify-center">
                       <div className="text-white text-center p-6">
                         <div className="flex flex-wrap gap-2 justify-center">
-                          {post.categories.map((cat: string) => (
+                          {post.tags.map((cat: string) => (
                             <span 
                               key={cat}
                               className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm"

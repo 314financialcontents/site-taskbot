@@ -197,3 +197,27 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Blog Post Styles - Estilos estandarizados para todos los posts */
+@layer components {
+  /* Marcadores de listas ordenadas - TODOS los posts usan este formato */
+  ol.list-decimal > li::marker {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5A6B7C;
+  }
+  
+  /* Marcadores de listas sin ordenar - TODOS los posts usan este formato */
+  ul:not([class]) > li::marker,
+  ul.space-y-4 > li::marker {
+    font-size: 1rem;
+    color: #5A6B7C;
+  }
+  
+  /* Strong tags - SIEMPRE mismo tamaño y peso en todo el blog */
+  article strong,
+  .blog-post-content strong {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
