@@ -2,9 +2,10 @@ import { Search, Lightbulb, Cog, Rocket, CheckCircle2, ArrowRight } from 'lucide
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { useLanguage } from '../../contexts/LanguageContext';
+import type { RouteKey } from '../../utils/routes';
 
 interface ComoLoHacemosPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function ComoLoHacemosPage({ onNavigate }: ComoLoHacemosPageProps) {

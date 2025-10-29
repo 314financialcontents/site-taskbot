@@ -3,9 +3,10 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import innovaPemeImg from 'figma:asset/a830e676ae6ab941a73b754fb2357f09e50433e8.png';
 import igapeImg from 'figma:asset/59add9222fd85bf4d54b2ea4be07d733ca0a1034.png';
 import { useLanguage } from '../contexts/LanguageContext';
+import type { RouteKey } from '../utils/routes';
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function Footer({ onNavigate }: FooterProps) {

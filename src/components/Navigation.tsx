@@ -3,10 +3,11 @@ import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '../contexts/LanguageContext';
+import type { RouteKey } from '../utils/routes';
 
 interface NavigationProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
+  currentPage: RouteKey;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {

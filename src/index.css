@@ -430,10 +430,6 @@
     container: card-header / inline-size;
   }
 
-  .visible {
-    visibility: visible;
-  }
-
   .absolute {
     position: absolute;
   }
@@ -564,6 +560,10 @@
     }
   }
 
+  .m-0 {
+    margin: calc(var(--spacing) * 0);
+  }
+
   .mx-auto {
     margin-inline: auto;
   }
@@ -678,6 +678,10 @@
 
   .block {
     display: block;
+  }
+
+  .contents {
+    display: contents;
   }
 
   .flex {
@@ -892,6 +896,10 @@
 
   .max-w-7xl {
     max-width: var(--container-7xl);
+  }
+
+  .max-w-none {
+    max-width: none;
   }
 
   .flex-1 {
@@ -1114,9 +1122,9 @@
     border-radius: calc(var(--radius)  + 4px);
   }
 
-  .rounded-r-lg {
-    border-top-right-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+  .rounded-r {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
   }
 
   .border {
@@ -1261,6 +1269,10 @@
     background-color: #3a7d7c;
   }
 
+  .bg-\[\#3A7D7C\]\/5 {
+    background-color: oklab(54.6186% -.0658875 -.0164753 / .05);
+  }
+
   .bg-\[\#3A7D7C\]\/10 {
     background-color: oklab(54.6186% -.0658875 -.0164753 / .1);
   }
@@ -1397,6 +1409,11 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
+  .from-\[\#0D1B2A\]\/95 {
+    --tw-gradient-from: oklab(21.7686% -.0114072 -.0336887 / .95);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
   .from-\[\#1B4965\] {
     --tw-gradient-from: #1b4965;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1450,6 +1467,12 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
 
+  .via-\[\#1B4965\]\/90 {
+    --tw-gradient-via: oklab(38.7535% -.0355086 -.0589199 / .9);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+
   .to-\[\#0D1B2A\] {
     --tw-gradient-to: #0d1b2a;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1485,13 +1508,13 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
-  .to-\[\#D1D5E0\] {
-    --tw-gradient-to: #d1d5e0;
+  .to-\[\#3A7D7C\]\/85 {
+    --tw-gradient-to: oklab(54.6186% -.0658875 -.0164753 / .85);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
-  .to-\[\#E1E5F0\]\/50 {
-    --tw-gradient-to: oklab(92.207% -.00000634789 -.0155097 / .5);
+  .to-\[\#D1D5E0\] {
+    --tw-gradient-to: #d1d5e0;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -1584,10 +1607,6 @@
 
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
-  }
-
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
   }
 
   .py-6 {
@@ -2599,6 +2618,29 @@
 
 html {
   font-size: var(--font-size);
+}
+
+@layer components {
+  ol.list-decimal > li::marker {
+    color: #5a6b7c;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  ul:not([class]) > li::marker {
+    color: #5a6b7c;
+    font-size: 1rem;
+  }
+
+  ul.space-y-4 > li::marker {
+    color: #5a6b7c;
+    font-size: 1rem;
+  }
+
+  article strong, .blog-post-content strong {
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }
 
 @property --tw-rotate-x {

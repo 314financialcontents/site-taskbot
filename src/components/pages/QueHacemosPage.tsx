@@ -3,9 +3,10 @@ import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useLanguage } from '../../contexts/LanguageContext';
+import type { RouteKey } from '../../utils/routes';
 
 interface QueHacemosPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: RouteKey) => void;
 }
 
 export function QueHacemosPage({ onNavigate }: QueHacemosPageProps) {

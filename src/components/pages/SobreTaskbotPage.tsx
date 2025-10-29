@@ -3,9 +3,10 @@ import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useLanguage } from '../../contexts/LanguageContext';
+import type { RouteKey } from '../../utils/routes';
 
 interface SobreTaskbotPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: RouteKey) => void;
 }
 
 export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
@@ -175,7 +176,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
                             </div>
                           </div>
                           <p className="text-white text-xl" style={{ fontWeight: 700 }}>40h→4h</p>
-                          <p className="text-white/70 text-xs mt-1">Tiempo ahorrado</p>
+                          <p className="text-white/70 text-xs mt-1">{t('sobreTaskbot.missionStats.timeSaved')}</p>
                         </div>
 
                         <div className="bg-white/15 backdrop-blur-sm border border-white/30 rounded-lg p-4 hover:bg-white/20 transition-all">
@@ -441,10 +442,10 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              Contáctanos
+              {t('sobreTaskbot.contactSectionTitle')}
             </h2>
             <p className="mt-4 text-[#E1E5F0]" style={{ fontSize: '1.25rem' }}>
-              Estamos listos para ayudarte
+              {t('sobreTaskbot.contactSectionSubtitle')}
             </p>
           </div>
 
@@ -452,7 +453,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
             <Card className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <Mail className="w-8 h-8 mx-auto mb-4" />
               <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                Email
+                {t('sobreTaskbot.contactEmail')}
               </h3>
               <p className="text-[#E1E5F0]">
                 info@taskbot.pro
@@ -462,7 +463,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
             <Card className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <Phone className="w-8 h-8 mx-auto mb-4" />
               <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                Teléfono
+                {t('sobreTaskbot.contactPhone')}
               </h3>
               <p className="text-[#E1E5F0]">
                 +34 91 101 2001
@@ -472,7 +473,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
             <Card className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <MapPin className="w-8 h-8 mx-auto mb-4" />
               <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                Oficina
+                {t('sobreTaskbot.contactOffice')}
               </h3>
               <p className="text-[#E1E5F0]">
                 Ferrol, A Coruña
@@ -486,7 +487,7 @@ export function SobreTaskbotPage({ onNavigate }: SobreTaskbotPageProps) {
               className="bg-[#3A7D7C] hover:bg-[#2E7D6D] text-white px-10 py-6"
               style={{ fontSize: '1.125rem' }}
             >
-              Hablemos de tu proyecto
+              {t('sobreTaskbot.contactButton')}
             </Button>
           </div>
         </div>

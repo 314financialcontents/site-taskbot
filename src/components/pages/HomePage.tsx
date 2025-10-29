@@ -4,9 +4,10 @@ import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useLanguage } from '../../contexts/LanguageContext';
+import type { RouteKey } from '../../utils/routes';
 
 interface HomePageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
@@ -31,22 +32,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   const stats = [
     {
-      value: '85%',
+      value: t('home.statsValues.lessTime'),
       label: t('home.stats.lessTime'),
       icon: <Clock className="w-6 h-6" />,
     },
     {
-      value: '95%',
+      value: t('home.statsValues.precision'),
       label: t('home.stats.precision'),
       icon: <Target className="w-6 h-6" />,
     },
     {
-      value: '4-8',
+      value: t('home.statsValues.weeks'),
       label: t('home.stats.weeks'),
       icon: <Zap className="w-6 h-6" />,
     },
     {
-      value: '40h/mes',
+      value: t('home.statsValues.saving'),
       label: t('home.stats.saving'),
       icon: <TrendingUp className="w-6 h-6" />,
     },
@@ -545,7 +546,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <p className="text-[#E1E5F0]" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
               {t('home.finalCta.learnFirst')}{' '}
               <button 
-                onClick={() => onNavigate('blog/del-know-how-al-flujo')}
+                onClick={() => onNavigate('blog/guardarrailes-ia-guia-practica')}
                 className="underline hover:text-white transition-colors"
                 style={{ fontWeight: 600 }}
               >

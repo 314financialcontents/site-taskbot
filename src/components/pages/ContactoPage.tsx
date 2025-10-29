@@ -3,9 +3,10 @@ import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import type { RouteKey } from '../../utils/routes';
 
 interface ContactoPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: RouteKey) => void;
 }
 
 export function ContactoPage({ onNavigate }: ContactoPageProps) {
@@ -124,10 +125,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   </div>
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Descripción del proceso
+                      {t('contacto.includePoint2Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Qué proceso quieres automatizar y cómo funciona actualmente
+                      {t('contacto.includePoint2')}
                     </p>
                   </div>
                 </div>
@@ -138,10 +139,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   </div>
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Volumen y frecuencia
+                      {t('contacto.includePoint3Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Cuántas veces al día/semana/mes y tiempo que consume
+                      {t('contacto.includePoint3')}
                     </p>
                   </div>
                 </div>
@@ -150,7 +151,7 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
 
             <Card className="p-8 border-2 border-[#E1E5F0]">
               <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                ¿Qué puedes esperar?
+                {t('contacto.whatToExpectTitle')}
               </h3>
               
               <div className="space-y-4">
@@ -158,10 +159,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   <Clock className="w-6 h-6 text-[#3A7D7C] flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Respuesta en menos de 2 días hábiles
+                      {t('contacto.expectPoint1Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Confirmación de recibo y primera valoración
+                      {t('contacto.expectPoint1')}
                     </p>
                   </div>
                 </div>
@@ -170,10 +171,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   <CheckCircle className="w-6 h-6 text-[#2E7D6D] flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Análisis gratuito
+                      {t('contacto.expectPoint2Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Evaluación inicial de viabilidad sin coste
+                      {t('contacto.expectPoint2')}
                     </p>
                   </div>
                 </div>
@@ -182,10 +183,10 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                   <Phone className="w-6 h-6 text-[#3A7D7C] flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-[#1B4965] mb-1" style={{ fontSize: '1rem', fontWeight: 600 }}>
-                      Llamada de 30 min
+                      {t('contacto.expectPoint3Title')}
                     </h4>
                     <p className="text-[#5A6B7C]" style={{ fontSize: '0.875rem', lineHeight: 1.6 }}>
-                      Si es viable, agendamos una sesión de análisis
+                      {t('contacto.expectPoint3')}
                     </p>
                   </div>
                 </div>
@@ -196,23 +197,23 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
           {/* Example Email */}
           <Card className="p-8 bg-[#E1E5F0]/30 border-2 border-[#E1E5F0]">
             <h3 className="text-[#0D1B2A] mb-6" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-              Plantilla lista para copiar
+              {t('contacto.templateTitle')}
             </h3>
             
             <div className="bg-white rounded-lg p-6 border-l-4 border-[#3A7D7C] font-mono text-sm">
               <div className="space-y-3 text-[#5A6B7C]">
-                <p><strong className="text-[#0D1B2A]">Asunto:</strong> Consulta automatización proceso facturas</p>
-                <p><strong className="text-[#0D1B2A]">De:</strong> juan.perez@miempresa.com</p>
+                <p><strong className="text-[#0D1B2A]">{t('contacto.templateSubject')}</strong> {t('contacto.templateSubjectText')}</p>
+                <p><strong className="text-[#0D1B2A]">{t('contacto.templateFrom')}</strong> juan.perez@miempresa.com</p>
                 <hr className="border-[#E1E5F0]" />
                 <div className="space-y-2">
-                  <p>Hola equipo Taskbot,</p>
-                  <p>Soy Juan Pérez, CFO de MiEmpresa SA (200 empleados, sector logística).</p>
-                  <p>Actualmente procesamos ~300 facturas/mes de forma manual:</p>
-                  <p>• Recibimos por email → Revisión manual → Validación datos → Envío a contabilidad</p>
-                  <p>• Nos lleva 2-3 horas diarias y genera errores ocasionales</p>
-                  <p>¿Sería un buen candidato para automatización?</p>
-                  <p>Teléfono: +34 600 123 456</p>
-                  <p>Gracias y saludos,<br />Juan</p>
+                  <p>{t('contacto.templateGreeting')}</p>
+                  <p>{t('contacto.templateIntro')}</p>
+                  <p>{t('contacto.templateProcess')}</p>
+                  <p>{t('contacto.templateStep1')}</p>
+                  <p>{t('contacto.templateStep2')}</p>
+                  <p>{t('contacto.templateQuestion')}</p>
+                  <p>{t('contacto.templatePhone')} +34 600 123 456</p>
+                  <p>{t('contacto.templateClosing')}<br />{t('contacto.templateSignature')}</p>
                 </div>
               </div>
             </div>
@@ -225,7 +226,7 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                 <Phone className="w-6 h-6 text-[#3A7D7C]" />
               </div>
               <h4 className="text-[#0D1B2A] mb-2" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                Teléfono
+                {t('contacto.phoneTitle')}
               </h4>
               <p className="text-[#5A6B7C]">+34 91 101 2001</p>
             </Card>
@@ -235,12 +236,12 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                 <MapPin className="w-6 h-6 text-[#3A7D7C]" />
               </div>
               <h4 className="text-[#0D1B2A] mb-2" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                Oficina
+                {t('contacto.officeTitle')}
               </h4>
               <p className="text-[#5A6B7C]" style={{ lineHeight: 1.5 }}>
-                Av. Esteiro, 145<br />
-                15403 Ferrol - A Coruña<br />
-                Spain
+                {t('contacto.officeAddress1')}<br />
+                {t('contacto.officeAddress2')}<br />
+                {t('contacto.officeAddress3')}
               </p>
             </Card>
 
@@ -249,9 +250,9 @@ export function ContactoPage({ onNavigate }: ContactoPageProps) {
                 <Clock className="w-6 h-6 text-[#2E7D6D]" />
               </div>
               <h4 className="text-[#0D1B2A] mb-2" style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-                Tiempo de respuesta
+                {t('contacto.responseTimeTitleAlt')}
               </h4>
-              <p className="text-[#5A6B7C]">Menos de 2 días hábiles</p>
+              <p className="text-[#5A6B7C]">{t('contacto.responseTimeAlt')}</p>
             </Card>
           </div>
         </div>
